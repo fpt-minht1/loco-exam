@@ -76,8 +76,14 @@
             $.when(AppServices.addProduct(product))
             .done(function () {
                 self.getProductList();
-            })
-            .fail();
+            });
+        }
+
+        this.delete = function (product) {
+            $.when(AppServices.deleteProduct(product))
+            .done(function () {
+                self.getProductList();
+            });
         }
     }
 

@@ -85,6 +85,5 @@ E:\10-Project\04-LOCO\loco-exam\locoExamApi\bin\Newtonsoft.Json.xml
 E:\10-Project\04-LOCO\loco-exam\locoExamApi\bin\System.Net.Http.Formatting.xml
 E:\10-Project\04-LOCO\loco-exam\locoExamApi\bin\System.Web.Http.xml
 E:\10-Project\04-LOCO\loco-exam\locoExamApi\bin\System.Web.Http.WebHost.xml
-E:\10-Project\04-LOCO\loco-exam\locoExamApi\obj\Debug\locoExamApi.csprojResolveAssemblyReference.cache
 E:\10-Project\04-LOCO\loco-exam\locoExamApi\obj\Debug\locoExamApi.dll
 E:\10-Project\04-LOCO\loco-exam\locoExamApi\obj\Debug\locoExamApi.pdb

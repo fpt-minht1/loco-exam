@@ -60,7 +60,7 @@
                   <th scope="row" class="text-center">{{ item.Id }}</th>
                   <td class="text-center">{{ item.Price | number:2 }}</td>
                   <td class="text-center">{{ item.Weight | number:2 }}</td>
-                  <td class="text-center"><button ng-click="$ctrl.delete(item.Id)"><i class="glyphicon glyphicon-remove"></i></button></td>
+                  <td class="text-center"><button ng-click="$ctrl.delete(item)"><i class="glyphicon glyphicon-remove"></i></button></td>
               </tr>
           </tbody>
       </table>
