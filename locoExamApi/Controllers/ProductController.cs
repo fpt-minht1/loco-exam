@@ -25,7 +25,6 @@ namespace locoExamApi.Controllers
             return products;
         }
 
-        [Route("api/product/{id}")]
         [HttpGet]
         public IHttpActionResult GetProduct(string id)
         {
@@ -50,9 +49,7 @@ namespace locoExamApi.Controllers
 
         [HttpDelete]
         public void DeleteProduct([FromBody]string id) {
-            var itemDelete = products.Where(
-                (p) => string.Equals(p.Id, id,
-                    StringComparison.OrdinalIgnoreCase));
+            var itemDelete = products.FirstOrDefault((p) => p.Id == id);
             products = products.Where(val => val != itemDelete).ToArray();
         }
     }
