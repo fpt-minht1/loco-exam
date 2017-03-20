@@ -9,20 +9,51 @@ using Newtonsoft.Json;
 
 namespace locoExamApi.Controllers
 {
+
     public class ProductController : ApiController
-    { 
-        Product[] products = new Product[]
+    {
+        public static Product[] products = new Product[]
         {
             new Product { Id = "PRODUCT001", Price = 10.90, Weight = 11.2 },
             new Product { Id = "PRODUCT002", Price = 20, Weight = 9},
             new Product { Id = "PRODUCT003", Price = 21, Weight = 10 }
-        };
+        }; 
+
 
         public IEnumerable<Product> GetAll()
         {
-            //return JsonConvert.SerializeObject(products);
-            return products.ToList();
-        }     
+            return products;
+        }
 
+        [Route("api/product/{id}")]
+        [HttpGet]
+        public IHttpActionResult GetProduct(string id)
+        {
+            var product = products.FirstOrDefault((p) => p.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return Ok(product);
+        }
+
+        [HttpPost]
+        public void AddProduct([FromBody]Product product) {
+            List<Product> listProduct = new List<Product>();
+            for (int j = 0; j < products.Length; j++)
+            {
+                listProduct.Add(products[j]);
+            }
+            listProduct.Add(product);
+            products = listProduct.ToArray();
+        }
+
+        [HttpDelete]
+        public void DeleteProduct([FromBody]string id) {
+            var itemDelete = products.Where(
+                (p) => string.Equals(p.Id, id,
+                    StringComparison.OrdinalIgnoreCase));
+            products = products.Where(val => val != itemDelete).ToArray();
+        }
     }
 }

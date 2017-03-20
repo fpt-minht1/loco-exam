@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Headers;
 using System.Web.Http;
+using System.Net.Http.Formatting;
 
 namespace locoExamApi
 {
@@ -14,8 +15,9 @@ namespace locoExamApi
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            config.Formatters.JsonFormatter.SupportedMediaTypes
-                .Add(new MediaTypeHeaderValue("text/html"));
+            //config.Formatters.JsonFormatter.SupportedMediaTypes
+            //    .Add(new MediaTypeHeaderValue("text/html"));
+            config.Formatters.Add(config.Formatters.JsonFormatter);
         }
     }
 }

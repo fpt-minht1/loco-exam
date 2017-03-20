@@ -3,8 +3,8 @@
 
     angular.module('app.controllers').controller('ProductController', ProductController);
 
-    ProductController.$inject = ['AppServices'];
-    function ProductController(AppServices) {
+    ProductController.$inject = ['AppServices', '$timeout'];
+    function ProductController(AppServices, $timeout) {
         var self = this;
         this.productList = [];
         this.productListCache = [];
@@ -20,7 +20,10 @@
         this.getProductList = function() {
             $.when(AppServices.getProductList())
             .done(function (res) {
-                self.productListCache = angular.fromJson(res)
+                $timeout(function () {
+                    self.productListCache = angular.fromJson(res);
+                    self.productList = angular.fromJson(res);
+                }, 0);
             })
             .fail();
         };
@@ -64,6 +67,18 @@
             }
             return items;
         };
+
+        this.add = function () {
+            var product = { Id: self.model.productId, Price: self.model.price, Weight: self.model.weight };
+            if (!self.model.productId || !self.model.price || !self.model.weight) {
+                return;
+            }
+            $.when(AppServices.addProduct(product))
+            .done(function () {
+                self.getProductList();
+            })
+            .fail();
+        }
     }
 
 })(window.angular);

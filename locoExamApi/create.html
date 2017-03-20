@@ -42,6 +42,7 @@
           </div>
       </form>
       <h3>Product Table</h3>
+
       <table class="table table-bordered table-hover table-condensed">
           <thead>
               <tr>
@@ -52,14 +53,14 @@
               </tr>
           </thead>
           <tbody>
-              <tr ng-if="!$ctrl.items || $ctrl.items.length == 0">
+              <tr ng-if="!$ctrl.productList || $ctrl.productList.length == 0">
                   <td colspan="4" class="text-center">No product found.</td>
               </tr>
-              <tr ng-if="$ctrl.items && $ctrl.items.length > 0" ng-repeat="item in $ctrl.items">
-                  <th scope="row" class="text-center">{{ item.product_id }}</th>
-                  <td class="text-center">{{ item.price | number:2 }}</td>
-                  <td class="text-center">{{ item.weight | number:2 }}</td>
-                  <td class="text-center"><button ng-click="$ctrl.delete(item.product_id)"><i class="glyphicon glyphicon-remove"></i></button></td>
+              <tr ng-if="$ctrl.productList && $ctrl.productList.length > 0" ng-repeat="item in $ctrl.productList">
+                  <th scope="row" class="text-center">{{ item.Id }}</th>
+                  <td class="text-center">{{ item.Price | number:2 }}</td>
+                  <td class="text-center">{{ item.Weight | number:2 }}</td>
+                  <td class="text-center"><button ng-click="$ctrl.delete(item.Id)"><i class="glyphicon glyphicon-remove"></i></button></td>
               </tr>
           </tbody>
       </table>
