@@ -42,3 +42,4 @@ D:\Projects\12-LOCO\locoExamSolution\locoExamApi\bin\System.Web.Http.xml
 D:\Projects\12-LOCO\locoExamSolution\locoExamApi\bin\System.Web.Http.WebHost.xml
 D:\Projects\12-LOCO\locoExamSolution\locoExamApi\obj\Debug\locoExamApi.dll
 D:\Projects\12-LOCO\locoExamSolution\locoExamApi\obj\Debug\locoExamApi.pdb
+D:\Projects\12-LOCO\locoExamSolution\locoExamApi\obj\Debug\locoExamApi.csprojResolveAssemblyReference.cache

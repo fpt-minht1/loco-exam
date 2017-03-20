@@ -214,6 +214,7 @@
   <ItemGroup>
     <Content Include="client\app\app.js" />
     <Content Include="client\app\controllers\controller.js" />
+    <Content Include="client\app\product.js" />
     <Content Include="client\app\services\services.js" />
     <Content Include="client\css\style.min.css" />
     <Content Include="client\oss\angular-cookies\angular-cookies.js" />

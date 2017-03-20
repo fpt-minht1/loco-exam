@@ -1,14 +1,27 @@
 (function() {
     'use strict';
 
-    angular.module('app.controllers').controller('BaseController', BaseController);
+    angular.module('app.controllers').controller('ProductController', ProductController);
 
-    BaseController.$inject = ['$rootScope'];
-    function BaseController($rootScope) {
+    ProductController.$inject = ['AppServices'];
+    function ProductController(AppServices) {
         var self = this;
-        this.model = {};
-        this.$rootScope = $rootScope;
-        this.$rootScope.url = url;
+        this.productList = [];
+        this.model = {
+            
+        };
+
+        this.init = function () {
+            self.getProductList();
+        };
+
+        this.getProductList = function() {
+            $.when(AppServices.getProductList())
+            .done(function (res) {
+                self.productList = angular.fromJson(res);
+            })
+            .fail();
+        };
     }
 
 })(window.angular);

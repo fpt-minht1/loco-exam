@@ -4,18 +4,17 @@
     angular.module('app.services').service('AppServices', AppServices);
 
     AppServices.$inject = [
-        '$http', '$q',
-        '$location',
-        '$cookies'
+        '$http', '$q'
     ];
-    function AppServices($location, $cookies) {
-        var apiHost = "http://localhost/api";
+    function AppServices() {
+        var apiHost = "";
         var that = this;
         this.sendRequest = function (url, type) {
             var deferred = $.Deferred();
             if (!type || type == 'GET') {
                 $.get(apiHost + url)
                 .done(function (response) {
+                    console.log(response);
                     deferred.resolve(response);
                 }).fail(function (response) {
                     deferred.reject(response);
