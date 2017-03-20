@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- stylesheet-->
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="/client/oss/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/client/oss/bootstrap/dist/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="/client/css/style.min.css">
+  <title></title>
+</head>
+<body ng-app="app">
+  <div class="container" ng-controller="ProductController as $ctrl" ng-init="$ctrl.init()">
+    <!-- content-->
+      <form>
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label for="product-id">Product ID</label>
+                      <input type="text" class="form-control" required id="product-id" ng-model="$ctrl.model.productId">
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="form-group">
+                      <label for="price">Price (USD)</label>
+                      <input type="text" class="form-control" required id="price" ng-model="$ctrl.model.price">
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="form-group">
+                      <label for="weight">Weight (in Ibs)</label>
+                      <input type="text" class="form-control" required id="weight" ng-model="$ctrl.model.weight">
+                  </div>
+              </div>
+              <div class="col-md-2">
+                  <div class="form-group">
+                      <label for="add-button">&nbsp;</label>
+                      <button type="button" class="btn btn-primary btn-block" ng-click="$ctrl.add()">Add</button>
+                  </div>
+              </div>
+          </div>
+      </form>
+      <h3>Product Table</h3>
+      <table class="table table-bordered table-hover table-condensed">
+          <thead>
+              <tr>
+                  <th class="text-center">Product ID</th>
+                  <th class="text-center">Price (USD)</th>
+                  <th class="text-center">Weight (Ibs)</th>
+                  <th class="text-center">Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-if="!$ctrl.items || $ctrl.items.length == 0">
+                  <td colspan="4" class="text-center">No product found.</td>
+              </tr>
+              <tr ng-if="$ctrl.items && $ctrl.items.length > 0" ng-repeat="item in $ctrl.items">
+                  <th scope="row" class="text-center">{{ item.product_id }}</th>
+                  <td class="text-center">{{ item.price | number:2 }}</td>
+                  <td class="text-center">{{ item.weight | number:2 }}</td>
+                  <td class="text-center"><button ng-click="$ctrl.delete(item.product_id)"><i class="glyphicon glyphicon-remove"></i></button></td>
+              </tr>
+          </tbody>
+      </table>
+
+  </div>
+  <!-- requires-->
+  <script src="/client/oss/jquery/dist/jquery.min.js"></script>
+  <script src="/client/oss/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/client/oss/angular/angular.min.js"></script>
+  <script src="/client/oss/underscore/underscore-min.js"></script>
+  <!-- app start-->
+  <script src="/client/app/app.js"></script>
+  <!-- services-->
+  <script src="/client/app/services/services.js"></script>
+  <!-- base controller-->
+  <script src="/client/app/controllers/controller.js"></script>
+ 
+  <!-- app end-->
+</body>
