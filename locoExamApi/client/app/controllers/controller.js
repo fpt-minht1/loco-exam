@@ -79,8 +79,8 @@
             });
         }
 
-        this.delete = function (product) {
-            $.when(AppServices.deleteProduct(product))
+        this.delete = function (id) {
+            $.when(AppServices.deleteProduct(id))
             .done(function () {
                 self.getProductList();
             });
