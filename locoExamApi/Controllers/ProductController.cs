@@ -1,11 +1,7 @@
-﻿using System;
+﻿using locoExamApi.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using locoExamApi.Models;
-using Newtonsoft.Json;
 
 namespace locoExamApi.Controllers
 {
@@ -48,7 +44,7 @@ namespace locoExamApi.Controllers
         }
 
         [HttpDelete]
-        public void DeleteProduct([FromBody]string id) {
+        public void DeleteProduct([FromUri]string id) {
             var itemDelete = products.FirstOrDefault((p) => p.Id == id);
             products = products.Where(val => val != itemDelete).ToArray();
         }

@@ -38,7 +38,7 @@
         }
 
         this.deleteProduct = function (id) {
-            return that.sendRequest(apiUrl, 'DELETE', id);
+            return that.sendRequest(apiUrl + '/' + id, 'DELETE');
         }
     }
 
