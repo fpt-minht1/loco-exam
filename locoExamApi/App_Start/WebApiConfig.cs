@@ -15,9 +15,8 @@ namespace locoExamApi
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            //config.Formatters.JsonFormatter.SupportedMediaTypes
-            //    .Add(new MediaTypeHeaderValue("text/html"));
-            config.Formatters.Add(config.Formatters.JsonFormatter);
+            config.Formatters.Clear();
+            config.Formatters.Add(new JsonMediaTypeFormatter());
         }
     }
 }
