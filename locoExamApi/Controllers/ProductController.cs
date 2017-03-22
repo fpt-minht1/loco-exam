@@ -37,9 +37,13 @@ namespace locoExamApi.Controllers
         public IHttpActionResult AddProduct([FromBody]Product product) {
 			if (product != null)
 			{
-				products.Add(product);				
+				products.Add(product);
+				return Ok(products);
+			}else
+			{
+				return NotFound();
 			}
-			return Ok(products);
+			
         }
 
         [HttpDelete]
@@ -48,8 +52,13 @@ namespace locoExamApi.Controllers
 			if (dProduct !=null)
 			{
 				products.Remove(dProduct);
+				return Ok(products);
 			}
-			return Ok(products);
-        }
+			else
+			{
+				return NotFound();
+			}
+
+		}
     }
 }
